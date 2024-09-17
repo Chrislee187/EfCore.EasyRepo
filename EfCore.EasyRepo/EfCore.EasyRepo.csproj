@@ -14,10 +14,13 @@
 		<GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);SetPackageVersion</GenerateNuspecDependsOn>
 	</PropertyGroup>
 
-	<Target Name="SetPackageVersion" DependsOnTargets="Build">
+	<Target Name="SetPackageVersion" DependsOnTargets="Build" Condition=" '$(Configuration)' == 'Debug' ">
 		<PropertyGroup>
-			<!-- <PackageVersion>$([System.DateTime]::Now.ToString(&quot;yyyy.MM.dd.HHmmss&quot;))</PackageVersion> -->
-			<!-- You can customize the format and the rule about how version increases here. -->
+			<!-- 
+				Uses a DateTime based versioning scheme in Debug builds for usage whilst under development.
+				.
+				For Release we should still use Semantic versioning and update the version in the package properties
+			-->
 			<PackageVersion>$([System.DateTime]::Now.ToString(&quot;0.yyyy.MMdd.HHmmffff&quot;))</PackageVersion>
 		</PropertyGroup>
 	</Target>
