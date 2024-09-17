@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
+    <PackageReference Include="Ulid" Version="1.3.4" />
   </ItemGroup>
 	<PropertyGroup>
 		<GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);SetPackageVersion</GenerateNuspecDependsOn>
@@ -21,7 +22,7 @@
 				.
 				For Release we should still use Semantic versioning and update the version in the package properties
 			-->
-			<PackageVersion>$([System.DateTime]::Now.ToString(&quot;0.yyyy.MMdd.HHmmffff&quot;))</PackageVersion>
+			<PackageVersion>$([System.DateTime]::Now.ToString("0.yyyy.MMdd.HHmmffff"))</PackageVersion>
 		</PropertyGroup>
 	</Target>
 </Project>
